@@ -15,7 +15,7 @@ Node *initNode(int value)
 }
 struct Stack
 {
-    ~Node *pTop;
+    Node *pTop;
 };
 
 void initStack(Stack &s)
