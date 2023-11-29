@@ -1,12 +1,20 @@
 #include <iostream>
-#include <string>
 using namespace std;
-
+/*
+Define a node to store data and the pointer of adjacent
+*/
 struct Node
 {
   int data;
   Node *pNext;
 };
+/**
+ * Purpose: Initialize the node of stack
+ * Input:
+ *  + ints
+ * Output:
+ *  + Node*
+ */
 Node *initNode(int value)
 {
   Node *p = new Node();
@@ -18,11 +26,25 @@ struct Stack
 {
   Node *pTop;
 };
-
+/**
+ * Purpose: Initialize the stack
+ * Input:
+ *  + stack
+ * Output:
+ *  + stack
+ */
 void initStack(Stack &s)
 {
   s.pTop = NULL;
 }
+/**
+ * Purpose: push a node to the stack
+ * Input:
+ *  + stack
+ *  + Node*
+ * Output:
+ *  + stack
+ */
 void push(Stack &s, Node *p)
 {
   if (s.pTop == NULL)
@@ -35,6 +57,14 @@ void push(Stack &s, Node *p)
     s.pTop = p;
   }
 }
+/**
+ * Purpose: Pop the node out the stack
+ * Input:
+ *  + stack
+ *  + int
+ * Output:
+ *  + bool
+ */
 
 int pop(Stack &s)
 {
@@ -51,7 +81,13 @@ int pop(Stack &s)
     return 0;
   }
 }
-
+/**
+ * Purpose: Print a list of value of stack to the terminal
+ * Input:
+ *  + stack
+ * Output:
+ *  + Print a list of value of stack to the terminal
+ */
 void print(Stack s)
 {
   Node *p = s.pTop;
@@ -61,6 +97,15 @@ void print(Stack s)
     p = p->pNext;
   }
 }
+/**
+ * Purpose: Pop the value from stack and add this to another stack
+ * Input:
+ *  + stack (ref)
+ *  + stack (ref)
+ * Output:
+ *  + stack
+ *  + stack
+ */
 void PopPush(Stack &sPop, Stack &sPush)
 {
   if (sPop.pTop == NULL)
@@ -87,7 +132,17 @@ void PopPush(Stack &sPop, Stack &sPush)
     cout << "Can not perform moving dish" << endl;
   }
 }
-
+/**
+ * Purpose: Handle option that user give into
+ * Input:
+ *  + stack A
+ *  + stack B
+ *  + stack C
+ * Output:
+ *  + stack A
+ *  + stack B
+ *  + stack C
+ */
 void handleMenu(Stack &sA, Stack &sB, Stack &sC)
 {
   cout << "Please enter the options: ";
@@ -130,6 +185,16 @@ void handleMenu(Stack &sA, Stack &sB, Stack &sC)
     break;
   }
 };
+/**
+ * Purpose: Print out the option for user to choose
+ * Input:
+
+ *  + stack A
+ *  + stack B
+ *  + stack C
+ * Output:
+ *  + Print out the option for user to choose and show the current stacks
+ */
 void showMenu(Stack &sA, Stack &sB, Stack &sC)
 {
   cout << endl;

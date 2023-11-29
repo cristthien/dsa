@@ -6,6 +6,13 @@ struct Node
     int data;
     Node *pNext;
 };
+/**
+ * Purpose: Initialize the node of stack
+ * Input:
+ *  + int
+ * Output:
+ *  + Node*
+ */
 Node *initNode(int value)
 {
     Node *p = new Node();
@@ -17,11 +24,26 @@ struct Stack
 {
     Node *pTop;
 };
+/**
+ * Purpose: Initialize the stack
+ * Input:
+ *  + stack
+ * Output:
+ *  + stack
+ */
 
 void initStack(Stack &s)
 {
     s.pTop = NULL;
 }
+/**
+ * Purpose: push a node to the stack
+ * Input:
+ *  + stack
+ *  + Node*
+ * Output:
+ *  + stack
+ */
 void push(Stack &s, Node *p)
 {
     if (s.pTop == NULL)
@@ -34,7 +56,14 @@ void push(Stack &s, Node *p)
         s.pTop = p;
     }
 }
-
+/**
+ * Purpose: Pop the node out the stack
+ * Input:
+ *  + stack
+ *  + int
+ * Output:
+ *  + bool
+ */
 bool pop(Stack &s, int &x)
 {
 
@@ -51,7 +80,13 @@ bool pop(Stack &s, int &x)
         return false;
     }
 }
-
+/**
+ * Purpose: Print a list of value of stack to the terminal
+ * Input:
+ *  + stack
+ * Output:
+ *  + Print a list of value of stack to the terminal
+ */
 void print(Stack s)
 {
     Node *p = s.pTop;
@@ -61,6 +96,14 @@ void print(Stack s)
         p = p->pNext;
     }
 }
+/**
+ * Purpose: Convert a decimal number to a binary
+ * Input:
+ *  + stack
+ *  + int
+ * Output:
+ *  + stack
+ */
 void ConvertToBinary(Stack &s, int value)
 {
     while (value != 0)

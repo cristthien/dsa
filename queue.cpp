@@ -1,41 +1,86 @@
 
 #include <iostream>
 using namespace std;
-struct Node {
+/*
+Define a node to store data and the pointer of adjacent
+*/
+struct Node
+{
     int data;
-    Node* pNext;
+    Node *pNext;
 };
-Node* initNode(int value){
-    Node* p = new Node();
+/**
+ * Purpose: Initialize the node of stack
+ * Input:
+ *  + int
+ * Output:
+ *  + Node*
+ */
+Node *initNode(int value)
+{
+    Node *p = new Node();
     p->data = value;
     p->pNext = NULL;
     return p;
 }
-struct Queue {
-    Node* pFront;
-    Node* pRear;
+/**
+ * Purpose: Initialize the queue
+ * Input:
+ *  + queue
+ * Output:
+ *  + queue
+ */
 
+struct Queue
+{
+    Node *pFront;
+    Node *pRear;
 };
-void initQueue(Queue& q) {
+
+void initQueue(Queue &q)
+{
     q.pFront = q.pRear = NULL;
 }
-void enqueue(Queue &q, Node*p) {
-    if (q.pFront == NULL) {
+/**
+ * Purpose:  enqueue a node to the queue
+ * Input:
+ *  + queue
+ *  + Node*
+ * Output:
+ *  + queue
+ */
+void enqueue(Queue &q, Node *p)
+{
+    if (q.pFront == NULL)
+    {
         q.pFront = q.pRear = p;
     }
-    else {
+    else
+    {
         q.pRear->pNext = p;
         q.pRear = p;
     }
-
 }
-bool dequeue(Queue &q, int &value) {
-    if (q.pFront == NULL) {
+/**
+ * Purpose:  dequeue a node to the queue
+ * Input:
+ *  + queue
+ *  + int
+ * Output:
+ *  + bool
+ */
+bool dequeue(Queue &q, int &value)
+{
+    if (q.pFront == NULL)
+    {
         return false;
-    }else{
-        Node* p = q.pFront;
+    }
+    else
+    {
+        Node *p = q.pFront;
         q.pFront = q.pFront->pNext;
-        if (q.pFront == NULL) {
+        if (q.pFront == NULL)
+        {
             q.pRear = NULL;
         }
         value = p->data;
@@ -43,13 +88,30 @@ bool dequeue(Queue &q, int &value) {
         return true;
     }
 }
-bool CheckingEmpty(Queue q) {
-    if (q.pFront == NULL) {
+/**
+ * Purpose: Check whether a queue is empty or not
+ * Input:
+ *  + queue
+ * Output:
+ *  + bool
+ */
+bool CheckingEmpty(Queue q)
+{
+    if (q.pFront == NULL)
+    {
         return true;
     }
     return false;
 }
-void handleMenu(Queue& q) {
+/**
+ * Purpose: Handle option that user give into
+ * Input:
+ *  + queue
+ * Output:
+ *  + queue
+ */
+void handleMenu(Queue &q)
+{
     cout << "Please enter the options: ";
     int option;
     cin >> option;
@@ -62,10 +124,12 @@ void handleMenu(Queue& q) {
         enqueue(q, initNode(value));
         break;
     case 2:
-        if (dequeue(q, value)) {
+        if (dequeue(q, value))
+        {
             cout << "The poped value" << value << endl;
         }
-        else {
+        else
+        {
             cout << "Poping value does not work" << endl;
         }
         break;
@@ -74,16 +138,19 @@ void handleMenu(Queue& q) {
         cout << "The value of rear node is " << q.pRear->data << endl;
         break;
     case 4:
-        if (CheckingEmpty(q)) {
+        if (CheckingEmpty(q))
+        {
             cout << "The stack is empty" << endl;
         }
-        else {
+        else
+        {
             cout << "The stack is not empty" << endl;
         }
         break;
     case 5:
-        Node * p = initNode(10);
-        if (p == NULL) {
+        Node *p = initNode(10);
+        if (p == NULL)
+        {
             cout << "The stack is full" << endl;
         }
         break;
@@ -92,15 +159,24 @@ void handleMenu(Queue& q) {
         break;
     }
 };
-void printQueue(Queue q) {
-    Node* p = q.pFront;
-    while (p != NULL) {
-        cout << p-> data<<endl;
+void printQueue(Queue q)
+{
+    Node *p = q.pFront;
+    while (p != NULL)
+    {
+        cout << p->data << endl;
         p = p->pNext;
     }
 }
-
-void showMenu(Queue & q) {
+/**
+ * Purpose: Print a list of value of queue to the terminal
+ * Input:
+ *  + queue
+ * Output:
+ *  + Print a list of value of queue to the terminal
+ */
+void showMenu(Queue &q)
+{
     cout << endl;
     cout << "========Demo Stack==========" << endl;
     cout << "1. Push" << endl;
@@ -110,8 +186,9 @@ void showMenu(Queue & q) {
     cout << "5. Checking Full" << endl;
     cout << "============================" << endl;
     cout << "STACK = TOP < ";
-    Node* p = q.pFront;
-    while (p != NULL) {
+    Node *p = q.pFront;
+    while (p != NULL)
+    {
         cout << p->data << " ";
         p = p->pNext;
     }
@@ -119,8 +196,6 @@ void showMenu(Queue & q) {
     cout << "============================" << endl;
 
     handleMenu(q);
-
-
 }
 
 int main()
@@ -133,9 +208,9 @@ int main()
     enqueue(q, initNode(7));
     enqueue(q, initNode(9));
     int x;
-    dequeue(q,x);
-    cout << x << endl<< endl;
+    dequeue(q, x);
+    cout << x << endl
+         << endl;
 
     printQueue(q);
 }
-
