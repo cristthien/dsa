@@ -112,6 +112,7 @@ void handleMenu(Stack &s)
     cout << "Please enter the options: ";
     int option;
     cin >> option;
+    Node *p;
     switch (option)
     {
         int value;
@@ -144,7 +145,7 @@ void handleMenu(Stack &s)
         }
         break;
     case 5:
-        Node *p = initNode(10);
+        p = initNode(10);
         if (p == NULL)
         {
             cout << "The stack is full" << endl;

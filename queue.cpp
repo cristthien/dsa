@@ -115,6 +115,7 @@ void handleMenu(Queue &q)
     cout << "Please enter the options: ";
     int option;
     cin >> option;
+    Node *p;
     switch (option)
     {
         int value;
@@ -148,7 +149,7 @@ void handleMenu(Queue &q)
         }
         break;
     case 5:
-        Node *p = initNode(10);
+        p = initNode(10);
         if (p == NULL)
         {
             cout << "The stack is full" << endl;
@@ -179,9 +180,9 @@ void showMenu(Queue &q)
 {
     cout << endl;
     cout << "========Demo Stack==========" << endl;
-    cout << "1. Push" << endl;
-    cout << "2. Pop" << endl;
-    cout << "3. Top" << endl;
+    cout << "1. enqueue" << endl;
+    cout << "2. dequeue" << endl;
+    cout << "3. Front and Rear" << endl;
     cout << "4. Checking Empty" << endl;
     cout << "5. Checking Full" << endl;
     cout << "============================" << endl;
@@ -202,15 +203,9 @@ int main()
 {
     Queue q;
     initQueue(q);
-    enqueue(q, initNode(10));
-    enqueue(q, initNode(1));
-    enqueue(q, initNode(4));
-    enqueue(q, initNode(7));
-    enqueue(q, initNode(9));
-    int x;
-    dequeue(q, x);
-    cout << x << endl
-         << endl;
 
-    printQueue(q);
+    while (1)
+    {
+        showMenu(q);
+    }
 }
